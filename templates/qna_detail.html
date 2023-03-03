@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container my-3">
+    <h1>{{ teacher.name }} 선생님</h1>
+
+    <table class="table">
+        <thread>
+            <tr class="table-dark">
+                <th>시간</th>
+                <th>예약한 학생</th>
+                <th>예약</th>
+            </tr>
+            {% for reserve in reserve %}
+            <tr class"table-light">
+                <td>
+                    {{ time.time }}
+                </td>
+
+                <td>
+                    {% if teacher.student != blank %}
+                        {{ teacher.student }}
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+
+                <td>
+                    {{ form.as_p }}
+                    <a href="{% url 'qna:reserve' %}" class="btn btn-primary">
+                    예약                        
+                    <a href="{% url 'qna:reserve' %}" class="btn btn-danger">
+                    취소
+                    </td>
+            {% endfor %}
+            </tr>
+        </thread>
+    </table>
+</div>
+
+{% endblock %}

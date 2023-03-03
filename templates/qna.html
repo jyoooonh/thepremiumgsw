@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-3">
+    <table class="table">
+        <h3>오늘 질문당직 선생님 / 시간</h3>
+        <tbody>
+            <table class="table">
+                <thread>
+                    <tr class="table-light">
+                </thread>
+            </table>
+        </tbody>
+        <table class="table">
+            <thread>
+                <tr class="table-light">
+                    {% if teacher %}
+                        {% for teacher in teacher %}
+                        <td><a href="{% url 'qna:detail' teacher.id %}">{{ teacher.name }} 선생님</a></td>
+                    {% endfor %}
+                    {% else %}
+                        <p>질문이 없습니다.</p>
+                    {% endif %}
+                </tr>
+            <!--
+                <tr class="table-gray">
+                    {% for teacher in teacher %}
+                    <td>예약 시간</td>
+                    {% endfor %}
+                </tr>
+            -->
+            </thread>
+        </table>
+    </table>
+</div>
+
+{% endblock %}
