@@ -14,7 +14,7 @@ logger = logging.getLogger('qna')
 
 
 def index(request):
-	3 / 0		# 강제로 오류 발생
+	logger.info("INFO 레벨로 출력")
 	teacher = Teacher.objects.order_by('id')
 	context = {'teacher' : teacher}
 	return render(request, 'qna.html', context)
