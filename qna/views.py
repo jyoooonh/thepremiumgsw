@@ -5,8 +5,12 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
+import logging
+
 from .forms import Reserve_Student
 from .models import Teacher, Reserve
+
+logger = logging.getLogger('qna')
 
 
 def index(request):

@@ -167,5 +167,9 @@ LOGGING = {
             'level': 'INFO',
             'propagate': False,
         },
+        'qna': {
+            'handlers': ['console', 'file'],
+            'level': 'INFO',
+        }
     }
 }
