@@ -10,6 +10,7 @@ from .models import Teacher, Reserve
 
 
 def index(request):
+	3 / 0		# 강제로 오류 발생
 	teacher = Teacher.objects.order_by('id')
 	context = {'teacher' : teacher}
 	return render(request, 'qna.html', context)
