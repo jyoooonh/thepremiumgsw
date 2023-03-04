@@ -4,7 +4,7 @@ from qna import views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('qna', include('qna.urls')),
+    path('qna/', include('qna.urls')),
     path('common/', include('common.urls')),
     path('', views.index, name='index'),
 ]
