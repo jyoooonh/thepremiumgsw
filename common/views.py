@@ -15,3 +15,7 @@ def signup(request):
 	else:
 		form = UserForm()
 	return render(request, 'common/signup.html', {'form': form})
+
+
+def page_not_found(request, exception):
+	return render(request, 'common/4040.html', {})
