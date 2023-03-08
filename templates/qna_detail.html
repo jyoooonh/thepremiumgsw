@@ -2,8 +2,15 @@
 {% block content %}
 
 <div class="container my-3">
+    <h2 id="current_date"></h2>
     <h1>{{ teacher.name }} 선생님</h1>
-
+    <script>
+            date = new Date();
+            year = date.getFullYear();
+            month = date.getMonth() + 1;
+            day = date.getDate();
+            document.getElementById("current_date").innerHTML = month + "/" + day ;
+        </script>
     <table class="table">
         <thread>
             <tr class="table-dark">
@@ -11,27 +18,34 @@
                 <th>예약한 학생</th>
                 <th>예약</th>
             </tr>
-            {% for reserve in reserve %}
-            <tr class"table-light">
-                <td>
-                    {{ time.time }}
-                </td>
+            {% for r in reserve %}
+            {% if r.date == today %}
+                {% if r.teacher_id == teacher %}
+                <tr class"table-light">
+                    <td>
+                        {{ r.time }}
+                    </td>
 
-                <td>
-                    {% if teacher.student != blank %}
-                        {{ teacher.student }}
+                    <td>
+                    {% if r.student_name != blank %}
+                        {{ r.student_name }}
                     {% else %}
                         -
                     {% endif %}
                 </td>
 
                 <td>
-                    {{ form.as_p }}
-                    <a href="{% url 'qna:reserve' %}" class="btn btn-primary">
-                    예약                        
-                    <a href="{% url 'qna:reserve' %}" class="btn btn-danger">
-                    취소
+                    {% if r.student_name == blank %}
+                        <a href="{% url 'qna:reserve_complete' r.id %}" class="btn btn-primary">
+                            예약      
+                    {% endif %}
+                    {% if r.student_name == user %}                  
+                        <a href="{% url 'qna:reserve_delete' r.id %}" class="btn btn-danger">
+                            취소
+                    {% endif %}
                     </td>
+                {% endif %}
+                {% endif %}
             {% endfor %}
             </tr>
         </thread>

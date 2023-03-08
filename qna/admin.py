@@ -1,7 +1,10 @@
 from django.contrib import admin
-from .models import Teacher, Reserve, Time_Table
+from .models import Teacher, Time_Table, Reserve
 
-admin.site.register(Reserve)
+class ReserveAdmin(admin.ModelAdmin):
+    list_display = ('date', 'teacher_id', 'time')
+
+admin.site.register(Reserve, ReserveAdmin)
 admin.site.register(Teacher)
 admin.site.register(Time_Table)
-# Register your models here.
+
