@@ -7,7 +7,6 @@ STATICFILES_DIRS = []
 DEBUG = False
 
 env = environ.Env()
-env = environ.Env()
 environ.Env.read_env(BASE_DIR / '.env')
 
 DATABASES = {
