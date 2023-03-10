@@ -23,7 +23,7 @@ def index(request):
 def detail(request, teacher_id):
 	today = date.today()
 	teacher = Teacher.objects.get(id=teacher_id)
-	reserve = Reserve.objects.all()
+	reserve = Reserve.objects.order_by('id')
 	context = {'teacher' : teacher, 'reserve' : reserve, 'today' : today}
 	return render(request, 'qna_detail.html', context)
 
