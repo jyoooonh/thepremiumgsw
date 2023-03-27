@@ -18,6 +18,7 @@
 		<!-- qna CSS -->
 		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
 		<title>질문당직</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	</head>
 	<body>
 		<!-- 네비게이션바 -->
@@ -27,5 +28,27 @@
 		<!-- 기본 템플릿 안에 삽입될 내용 End -->
 		<!-- Bootstrap JS -->
 		<script src="{% static 'bootstrap.min.js' %}"></script>
+
+		<script>
+			$(document).ready(function () {
+				$("#myButton").click(function () {
+					// AJAX 요청
+					$.ajax({
+						url: "/reserve/delete/{{ reserve.id }}/",
+						type: "POST",
+						data: {
+							csrfmiddlewaretoken: "{{ csrf_token }}",
+						},
+						success: function (data) {
+							// 팝업 창에 메시지 출력
+							alert(data.message);
+						},
+						error: function (xhr, errmsg, err) {
+							console.log(xhr.status + ": " + xhr.responseText);
+						},
+					});
+				});
+			});
+		</script>
 	</body>
 </html>
