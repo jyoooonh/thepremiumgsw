@@ -22,6 +22,8 @@ class Reserve(models.Model):
 	teacher_id = models.ForeignKey("Teacher", related_name="teacher",null=True, on_delete=models.CASCADE)
 	time = models.ForeignKey(Time_Table, on_delete=models.CASCADE, null=True)
 	student_name = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+	comment_subject = models.CharField(max_length=50, null=True, blank=True)
+	comment_content = models.TextField(max_length=10000, null=True, blank=True)
 
 	def __str__(self):
 		return str(self.date) if self.date else ''

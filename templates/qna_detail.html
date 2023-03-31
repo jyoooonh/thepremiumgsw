@@ -3,19 +3,14 @@
 
 <div class="container my-3">
     <h1>{{ teacher.name }} 선생님</h1>
-    <script>
-            date = new Date();
-            year = date.getFullYear();
-            month = date.getMonth() + 1;
-            day = date.getDate();
-            document.getElementById("current_date").innerHTML = month + "/" + day ;
-        </script>
     <table class="table">
         <thread>
             <tr class="table-dark">
                 <th>시간</th>
                 <th>예약한 학생</th>
                 <th>예약</th>
+                <th></th>
+                <th></th>
             </tr>
             {% for r in reserve %}
             {% if r.date == today %}
@@ -31,20 +26,52 @@
                     {% else %}
                         -
                     {% endif %}
-                </td>
+                    </td>
 
-                <td>
-                    {% if r.student_name == blank %}
-                        <a href="{% url 'qna:reserve_complete' r.id %}" class="btn btn-primary">
-                            예약      
-                    {% endif %}
-                    {% if r.student_name == user %}                  
-                        <a href="{% url 'qna:reserve_delete' r.id %}" class="btn btn-danger">
-                            취소
-                    {% endif %}
+                    <td>
+                        {% if r.student_name == blank %}
+                            <a href="{% url 'qna:reserve_complete' r.id %}" class="btn btn-primary">
+                                예약      
+                        {% endif %}
+                        {% if r.student_name == user %}                  
+                            <a href="{% url 'qna:reserve_delete' r.id %}" class="btn btn-danger">
+                                취소
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        {% if request.user.is_authenticated %}
+                            {% if request.user.is_staff or r.student_name == user %}
+                                {% if r.comment_subject == blank %}
+                                -
+                                {% endif %}
+                                {% if r.comment_subject != blank %}
+                                {{ r.comment_subject}}
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        {% if request.user.is_authenticated %}
+                            {% if request.user.is_staff %}
+
+                            {% if r.comment_subject == blank %}
+                            <a href="{% url 'qna:comment_create' r.id %}" class="btn btn-success">
+                                코멘트 등록
+                            {% endif %}
+
+                            {% if r.comment_subject != blank %}
+                            <a href="{% url 'qna:comment_modify' r.id %}" class="btn btn-light">
+                                코멘트 수정
+                            {% endif %}
+
+                        {% else %}
+                        {% endif %}
+                        {% endif %}
                     </td>
                 {% endif %}
-                {% endif %}
+            {% endif %}
             {% endfor %}
             </tr>
         </thread>

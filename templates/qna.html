@@ -1,13 +1,6 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container my-3">
 	<table class="table">
-		<script>
-			date = new Date();
-			year = date.getFullYear();
-			month = date.getMonth() + 1;
-			day = date.getDate();
-			document.getElementById("current_date").innerHTML = month + "/" + day;
-		</script>
 		<tbody>
 			<table class="table">
 				<thread> <tr class="table-light"></tr></thread>
@@ -18,9 +11,7 @@
 				<tr class="table-light">
 					{% if teacher %} {% for teacher in teacher %}
 					<th>
-						<a href="{% url 'qna:detail' teacher.id %}"
-							>{{ teacher.name }}T</a
-						>
+						<a href="{% url 'qna:detail' teacher.id %}" style="text-decoration:none">{{ teacher.name }}T</a>
 					</th>
 					{% endfor %} {% else %}
 					<p>질문 당직 선생님이 없습니다.</p>
@@ -30,8 +21,15 @@
 		</table>
 	</br>
 		<h3> 질문 당직 스케줄표 </h3>
-
-			<table style="border:1px 단색 검정" text_align="center" class="table">
+			<table style="border:1px gray; text-align:center;" class="table">
+				<col style="border-right: 1px solid black;">
+  			<col style="border-right: 1px solid black;">
+ 	 			<col style="border-right: 1px solid black;">
+ 	 			<col style="border-right: 1px solid black;">
+  			<col style="border-right: 1px solid black;">
+  			<col style="border-right: 1px solid black;">
+  			<col style="border-right: 1px solid black;">
+  			<col style="border-right: 1px solid black;">
 				<th> 과목 </th>
 				<th> 선생님 </th>
 				<th> 월 </th>
