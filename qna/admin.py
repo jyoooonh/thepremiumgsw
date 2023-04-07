@@ -8,4 +8,3 @@ class ReserveAdmin(admin.ModelAdmin):
 admin.site.register(Reserve, ReserveAdmin)
 admin.site.register(Teacher)
 admin.site.register(Time_Table)
-
