@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container my-3">
+	<table class="table">
+		<tbody>
+			<table class="table">
+				<thread> <tr class="table-light"></tr></thread>
+			</table>
+		</tbody>
+		<table class="table">
+			<thread>
+				<tr class="table-light">
+					{% if teacher %} {% for teacher in teacher %}
+					<th>
+						<a
+							href="{% url 'qna:detail' teacher.id %}"
+							style="text-decoration: none"
+							>{{ teacher.name }}T</a
+						>
+					</th>
+					{% endfor %} {% endif %}
+				</tr>
+			</thread>
+		</table>
+	</table>
+</div>
+
+{% endblock %}
