@@ -19,6 +19,7 @@ def index(request):
 	context = {'teacher' : teacher, 'reserve': reserve}
 	return render(request, 'qna.html', context)
 
+
 @login_required(login_url='common:login')
 def detail(request, teacher_id):
 	today = date.today()
@@ -72,6 +73,3 @@ def comment_modify(request, reserve_id):
     else:
         form = CommentForm(instance=reserve)
     return render(request, 'comment_form.html', {'form': form})
-
-
-	

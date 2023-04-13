@@ -14,6 +14,7 @@ ALLOWED_HOSTS = ['3.36.170.219']
 INSTALLED_APPS = [
     'common.apps.CommonConfig',
     "qna.apps.QnaConfig",
+    'teacher.apps.TeacherConfig',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
