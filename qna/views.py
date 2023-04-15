@@ -9,6 +9,7 @@ from .forms import CommentForm
 from .models import Teacher, Reserve
 from django.contrib.auth.models import User
 from datetime import date
+import datetime
 
 from django.core.exceptions import *
 
@@ -31,10 +32,16 @@ def detail(request, teacher_id):
 
 @login_required(login_url='common:login')
 def reserve(request, reserve_id):
-		reserve = Reserve.objects.get(id=reserve_id)
-		reserve.student_name = request.user
-		reserve.save()
-		return render(request, 'reserve_complete.html')
+    reserve = Reserve.objects.get(id=reserve_id)
+    today = datetime.datetime.today().date()
+    existing_reservation = Reserve.objects.filter(date=today, teacher_id=reserve.teacher_id, student_name=request.user).exists()
+    if not existing_reservation:
+        reserve.student_name = request.user
+        reserve.save()
+        return render(request, 'reserve_complete.html')
+    else:
+        messages.warning(request, '이미 예약하셨습니다.')
+        return redirect('qna:detail', teacher_id=reserve.teacher_id.id)
 	
 
 @login_required(login_url='common:login')
@@ -54,7 +61,8 @@ def comment_create(request, reserve_id):
             reserve.comment_subject = form.cleaned_data['comment_subject']
             reserve.comment_content = form.cleaned_data['comment_content']
             reserve.save()
-            return redirect('qna:index')
+            teacher_id = reserve.teacher_id.id
+            return redirect('qna:detail', teacher_id=teacher_id)
     else:
         form = CommentForm(instance=reserve)
     return render(request, 'comment_form.html', {'form': form})
@@ -69,7 +77,8 @@ def comment_modify(request, reserve_id):
             comment = form.save(commit=False)
             comment.reserve = reserve
             comment.save()
-            return redirect('qna:index')
+            teacher_id = reserve.teacher_id.id
+            return redirect('qna:detail', teacher_id=teacher_id)
     else:
         form = CommentForm(instance=reserve)
     return render(request, 'comment_form.html', {'form': form})

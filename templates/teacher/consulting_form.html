@@ -1,6 +1,14 @@
 {% extends 'base.html' %} {% block content %}
+<script>
+	function goBack() {
+		var previousUrl = document.referrer;
+
+		window.location.href = previousUrl;
+	}
+</script>
+
 <div class="container">
-	<h5 class="my-3 border-bottom pb-2">{{ r.student_name }}질문내용</h5>
+	<h5 class="my-3 border-bottom pb-2">상담내용</h5>
 	<form method="post">
 		{% csrf_token %}
 		<div class="mb-3">
@@ -13,7 +21,6 @@
 				value="{{ form.comment_subject.value|default_if_none:'' }}"
 			/>
 		</div>
-
 		<div class="mb-3">
 			<label for="comment_content" class="form-label">내용</label>
 			<textarea
@@ -26,7 +33,9 @@
 			>
 		</div>
 
-		<button type="submit" class="btn btn-primary">저장하기</button>
+		<button type="submit" class="btn btn-primary" onclick="goBack()">
+			저장하기
+		</button>
 	</form>
 </div>
 {% endblock %}

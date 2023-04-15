@@ -9,7 +9,8 @@ class Consulting(models.Model):
     student_name = models.CharField(max_length=10, null=True, blank=True)
     consulting_type = models.CharField(max_length=20, null=True, blank=True)
     consulting_subject = models.CharField(max_length=100, null=True, blank=True)
-    consulting_content = models.CharField(max_length=1000, null=True, blank=True)
+    consulting_content = models.TextField(max_length=2000, null=True, blank=True)
+    create_date = models.DateTimeField(null=True)
     
     def __str__(self):
         return self.student_name

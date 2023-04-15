@@ -19,6 +19,7 @@
 		<title>질문당직</title>
 
 		<!-- 페이지 분할 -->
+		{% comment %}
 		<style>
 			div.left {
 				width: 50%;
@@ -33,8 +34,17 @@
 				background: #ece6cc;
 			}
 		</style>
+		{% endcomment %}
 
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+		<script>
+			function goBack() {
+				var previousUrl = document.referrer;
+
+				window.location.href = previousUrl;
+			}
+		</script>
 	</head>
 	<body>
 		<!-- 네비게이션바 -->
