@@ -28,7 +28,7 @@
                 </li>
                 <li>
                     {% if request.user.is_staff %}
-                    <a class="nav-link" href="#">선생님 페이지<a>
+                    <a class="nav-link" href="{% url 'teacher:main' %}">선생님 페이지<a>
                         {% endif %}
                 </li>
             </ul>

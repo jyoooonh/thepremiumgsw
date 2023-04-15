@@ -12,7 +12,7 @@
 					{% if teacher %} {% for teacher in teacher %}
 					<th>
 						<a
-							href="{% url 'qna:detail' teacher.id %}"
+							href="{% url 'teacher:detail' teacher.id %}"
 							style="text-decoration: none"
 							>{{ teacher.name }}T</a
 						>

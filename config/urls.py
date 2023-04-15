@@ -7,8 +7,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path('qna/', include('qna.urls')),
     path('common/', include('common.urls')),
+    path('teacher_page/', include('teacher.urls')),
     path('', views.index, name='index'),
-    path('teacher_page/', include('teacher.urls'))
 ]
 
 

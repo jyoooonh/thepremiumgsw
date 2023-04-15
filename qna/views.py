@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .forms import CommentForm
-from .models import Teacher, Reserve, Time_Table
+from .models import Teacher, Reserve
 from django.contrib.auth.models import User
 from datetime import date
 

@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container my-3">
+    <h2>{{ teacher.name }} 선생님</h2>
+
+		<div class="left">
+			<h5>멘토링 / 상담</h5>
+
+
+		</div>
+
+		<div class="right">
+			<h5>질문내역<h5>
+    <table class="table">
+        <thread>
+            <tr class="table-dark">
+                <th>날짜</th>
+                <th>학생</th>
+				<th>제목</th>
+				<th></th>
+				<th></th>
+            </tr>
+            {% for r in reserve %}
+                {% if r.teacher_id == teacher %}
+                <tr class"table-light">
+                    <td>
+                        {{ r.date }}
+                    </td>
+                    <td>
+                        {{ r.student_name }}
+                    </td>
+                    <td>
+                        {% if r.comment_subject != blank %}
+						{{ r.comment_subject}}
+                        {% else %}
+                        {% endif %}
+                    </td>
+
+                    <td>
+                        {% if request.user.is_authenticated %}
+                            {% if request.user.is_staff %}
+
+                            {% if r.comment_subject == blank %}
+                            <a href="{% url 'qna:comment_create' r.id %}" class="btn btn-success">
+                                코멘트 등록
+                            {% endif %}
+
+                            {% if r.comment_subject != blank %}
+                            <a href="{% url 'qna:comment_modify' r.id %}" class="btn btn-light">
+                                코멘트 수정
+                            {% endif %}
+
+                        {% else %}
+                        {% endif %}
+                        {% endif %}
+                    </td>
+            {% else %}
+            {% endif %}
+            {% endfor %}
+            </tr>
+        </thread>
+    </table>
+
+		<!-- 페이징처리 시작 -->
+    <ul class="pagination justify-content-center">
+        <!-- 이전페이지 -->
+        {% if reserve.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ reserve.previous_page_number }}">이전</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+        </li>
+        {% endif %}
+        <!-- 페이지리스트 -->
+        {% for page_number in reserve.paginator.page_range %}
+        {% if page_number >= reserve.number|add:-5 and page_number <= reserve.number|add:5 %}
+        {% if page_number == reserve.number %}
+        <li class="page-item active" aria-current="page">
+            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+        </li>
+        {% else %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+        </li>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+        <!-- 다음페이지 -->
+        {% if reserve.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ reserve.next_page_number }}">다음</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <a class="page-link" tabindex="1" aria-disabled="true" href="#">다음</a>
+        </li>
+        {% endif %}
+    </ul>
+    <!-- 페이징처리 끝 -->
+	</div>
+</div>
+
+{% endblock %}
