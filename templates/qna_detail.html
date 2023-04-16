@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
+{% if messages %}
+<div class="container my-3">
+    {% for message in messages %}
+    <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+</div>
+{% endif %}
+
 <div class="container my-3">
     <h1>{{ teacher.name }} 선생님</h1>
     <table class="table">
@@ -71,6 +79,8 @@
                         {% endif %}
                     </td>
                 {% endif %}
+            {% else %}
+                    
             {% endif %}
             {% endfor %}
             </tr>

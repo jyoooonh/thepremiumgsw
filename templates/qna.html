@@ -6,19 +6,6 @@
 				<thread> <tr class="table-light"></tr></thread>
 			</table>
 		</tbody>
-			<table class="table">
-			<thread>
-				<tr class="table-light">
-					{% if teacher %} {% for teacher in teacher %}
-					<th>
-						<a href="{% url 'qna:detail' teacher.id %}" style="text-decoration:none">{{ teacher.name }}T</a>
-					</th>
-					{% endfor %} {% else %}
-					<p>질문 당직 선생님이 없습니다.</p>
-					{% endif %}
-				</tr>
-			</thread>
-		</table>
 	</br>
 		<h3> 질문 당직 스케줄표 </h3>
 			<table style="border:1px gray; text-align:center;" class="table">
@@ -45,7 +32,9 @@
 						<td> - </td>
 						<td> - </td>
 						<td> - </td>
-						<td> 19:00 ~ 23:00 </td>
+						<td>
+							<a href="{% url 'qna:detail' 1 %}" style="text-decoration:none">19:00 ~ 23:00 </a>
+						</td>
 						<td> - </td>
 						<td> - </td>
 						<td> - </td>
@@ -55,16 +44,24 @@
 						<td> 홍기은T </td>
 						<td> - </td>
 						<td> - </td>
-						<td> 19:00 ~ 23:00 </td>
+						<td>
+							<a href="{% url 'qna:detail' 2 %}" style="text-decoration:none">19:00 ~ 23:00</a>
+						</td>
 						<td> - </td>
-						<td> 19:00 ~ 23:00 </td>
-						<td> 10:00 ~ 17:00 </td>
+						<td>
+							<a href="{% url 'qna:detail' 2 %}" style="text-decoration:none">19:00 ~ 23:00 </a>
+						</td>
+						<td> 
+							<a href="{% url 'qna:detail' 2 %}" style="text-decoration:none">10:00 ~ 17:00</a>
+						</td>
 						<td> - </td>
 					</tr>
 					<tr>
 						<td> 수학 </td>
 						<td> 박현빈T </td>
-						<td> 19:00 ~ 23:00 </td>
+						<td> 
+							<a href="{% url 'qna:detail' 3 %}" style="text-decoration:none">19:00 ~ 23:00</a>
+						</td>
 						<td> - </td>
 						<td> - </td>
 						<td> - </td>
@@ -76,7 +73,7 @@
 						<td> 수학 </td>
 						<td> 강형곤T </td>
 						<td> - </td>
-						<td> 19:00 ~ 23:00 </td>
+						<td> <a href="{% url 'qna:detail' 8 %}" style="text-decoration:none"> 19:00 ~ 23:00 </a> </td>
 						<td> - </td>
 						<td> - </td>
 						<td> - </td>
@@ -90,7 +87,7 @@
 						<td> - </td>
 						<td> - </td>
 						<td> - </td>
-						<td> - </td>
+						<td> <a href="{% url 'qna:detail' 4 %}" style="text-decoration:none">예약</a> </td>
 						<td> 13:00 ~ 16:00 </td>
 						<td> - </td>
 					</tr>
@@ -101,7 +98,7 @@
 						<td> - </td>
 						<td> - </td>
 						<td> - </td>
-						<td> - </td>
+						<td> <a href="{% url 'qna:detail' 5 %}" style="text-decoration:none">예약</a> </td>
 						<td> - </td>
 						<td> 13:00 ~ 16:00 </td>
 					</tr>
@@ -112,7 +109,7 @@
 						<td> - </td>
 						<td> - </td>
 						<td> - </td>
-						<td> - </td>
+						<td> <a href="{% url 'qna:detail' 6 %}" style="text-decoration:none">예약</a> </td>
 						<td> - </td>
 						<td> 16:00 ~ 17:30 </td>
 					</tr>
@@ -123,7 +120,7 @@
 						<td> - </td>
 						<td> - </td>
 						<td> - </td>
-						<td> - </td>
+						<td> <a href="{% url 'qna:detail' 7 %}" style="text-decoration:none">예약</a> </td>
 						<td> 20:00 ~ 23:00 </td>
 						<td> - </td>
 					</tr>

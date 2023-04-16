@@ -8,7 +8,6 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1, shrink-to-fit=no"
 		/>
-
 		<!-- Bootstrap CSS-->
 		<link
 			rel="stylesheet"
@@ -18,7 +17,34 @@
 		<!-- qna CSS -->
 		<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
 		<title>질문당직</title>
+
+		<!-- 페이지 분할 -->
+		{% comment %}
+		<style>
+			div.left {
+				width: 50%;
+				float: left;
+				box-sizing: border-box;
+				background: #8977ad;
+			}
+			div.right {
+				width: 50%;
+				float: right;
+				box-sizing: border-box;
+				background: #ece6cc;
+			}
+		</style>
+		{% endcomment %}
+
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+		<script>
+			function goBack() {
+				var previousUrl = document.referrer;
+
+				window.location.href = previousUrl;
+			}
+		</script>
 	</head>
 	<body>
 		<!-- 네비게이션바 -->

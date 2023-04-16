@@ -13,6 +13,7 @@
 				value="{{ form.comment_subject.value|default_if_none:'' }}"
 			/>
 		</div>
+
 		<div class="mb-3">
 			<label for="comment_content" class="form-label">내용</label>
 			<textarea
@@ -21,7 +22,7 @@
 				id="content"
 				rows="10"
 			>
-				{{ form.comment_content.value|default_if_none:'' }}</textarea
+{{ form.comment_content.value|default_if_none:'' }}</textarea
 			>
 		</div>
 

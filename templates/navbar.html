@@ -26,6 +26,11 @@
                     <a class="nav-link" href="{% url 'common:signup' %}">회원가입</a>
                     {% endif %}
                 </li>
+                <li>
+                    {% if request.user.is_staff %}
+                    <a class="nav-link" href="{% url 'teacher:main' %}">선생님 페이지<a>
+                        {% endif %}
+                </li>
             </ul>
         </div>
     </div>
