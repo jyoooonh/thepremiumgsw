@@ -40,7 +40,7 @@ def reserve(request, reserve_id):
         reserve.save()
         return render(request, 'reserve_complete.html')
     else:
-        messages.warning(request, '이미 예약하셨습니다.')
+        messages.warning(request, '이미 예약하였습니다.')
         return redirect('qna:detail', teacher_id=reserve.teacher_id.id)
 	
 
