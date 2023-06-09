@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class Consulting(models.Model):
     id = models.BigAutoField(primary_key=True)
-    date = models.DateField(null=True)
+    date = models.DateField(null=True, blank=True)
     subject = models.CharField(max_length=10, null=True, blank=True)
     teacher_name = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     student_name = models.CharField(max_length=10, null=True, blank=True)
