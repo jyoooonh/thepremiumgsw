@@ -11,6 +11,6 @@ class Consulting(models.Model):
     consulting_subject = models.CharField(max_length=100, null=True, blank=True)
     consulting_content = models.TextField(max_length=2000, null=True, blank=True)
     
-    def __str__(self):
-        return self.student_name
+    # def __str__(self):
+    #     return self.student_name
     
