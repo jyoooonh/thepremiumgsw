@@ -6,7 +6,7 @@ class ConsultingForm(forms.ModelForm):
         ('new_counseling', '신규상담'),
         ('question', '질문'),
         ('mentoring', '멘토링'),
-        ('other', '기타'),
+        # ('other', '기타'),
     )
     consulting_type = forms.ChoiceField(choices=CHOICES, 
                                         widget=forms.Select(attrs={'class': 'form-select'}), label='상담유형')
