@@ -3,14 +3,14 @@
 	<table class="table">
 		<h3> 질문 당직 스케줄표 </h3>
 			<table style="border:1px gray; text-align:center;" class="table">
-				<col style="border-right: 1px solid black; width: 7%;">
+				<col style="border-right: 1px solid black; width: 9%;">
   			<col style="border-right: 1px solid black; width: 7%;">
- 	 			<col style="border-right: 1px solid black; width: 12.5%;">
- 	 			<col style="border-right: 1px solid black; width: 12.5%;">
-  			<col style="border-right: 1px solid black; width: 12.5%;">
-  			<col style="border-right: 1px solid black; width: 12.5%;">
-  			<col style="border-right: 1px solid black; width: 12.5%;">
-  			<col style="border-right: 1px solid black; width: 12.5%;">
+ 	 			<col style="border-right: 1px solid black; width: 12%;">
+ 	 			<col style="border-right: 1px solid black; width: 12%;">
+  			<col style="border-right: 1px solid black; width: 12%;">
+  			<col style="border-right: 1px solid black; width: 12%;">
+  			<col style="border-right: 1px solid black; width: 12%;">
+  			<col style="border-right: 1px solid black; width: 12%;">
 				<th> 과목 </th>
 				<th> 선생님 </th>
 				<th> 월 </th>
@@ -41,7 +41,7 @@
 						</td>
 						<td> - </td>
 						<td> - </td>
-						<td> - </td>
+						<td> <a href="{% url 'qna:detail' 3 %}" style="text-decoration:none">19:00 ~ 23:00</a> </td>
 						<td> - </td>
 						<td> - </td>
 						<td> - </td>
@@ -57,7 +57,7 @@
 						<td> - </td>
 						<td> - </td>
 					</tr>
-					<tr>
+					{% comment %} <tr>
 						<td> 물리, 화학 </td>
 						<td> 신준철T </td>
 						<td> - </td>
@@ -78,7 +78,7 @@
 						<td> <a href="{% url 'qna:detail' 5 %}" style="text-decoration:none">예약</a> </td>
 						<td> - </td>
 						<td> 13:00 ~ 16:00 </td>
-					</tr>
+					</tr> {% endcomment %}
 					<tr>
 						<td> 통과, 화학 </td>
 						<td> 송진화T </td>
